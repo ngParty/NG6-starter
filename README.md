@@ -1,16 +1,18 @@
 <p align="center">
-    <img src="http://res.cloudinary.com/angularclass/image/upload/v1431802814/ng6_vrmd60.png" alt="NG6" width="320px;"/>
+    <img src="https://pbs.twimg.com/profile_images/2660272602/87a5a0fdc86455c3f94b0b0eebfdb1b9_400x400.png" alt="typescript" width="150px">
+    <img src="https://avatars1.githubusercontent.com/u/3802108?v=3&s=400" alt="jspm" width="150px">
+    <img src="https://github.com/angular/angular.js/blob/master/images/logo/AngularJS-Shield.exports/AngularJS-Shield-medium.png?raw=true" alt="angular" width="150px">
 </p>
 
 # NG6 [![Join the chat at https://gitter.im/angular-class/NG6-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angular-class/NG6-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-> Starter repo for [Angular](https://angularjs.org) + [ES6](https://git.io/es6features) + [JSPM](http://jspm.io/) (or [Webpack](https://github.com/angular-class/NG6-starter/tree/master))
+> Starter repo for [Angular](https://angularjs.org) + [ES6](https://git.io/es6features) + [JSPM](http://jspm.io/) + [Typescript](http://www.typescriptlang.org/) (or [Webpack](https://github.com/angular-class/NG6-starter/tree/master))
 
 This repo serves as an extremely minimal starter for anyone looking to get up and running with Angular and ES6. Using a combo of [JSPM](http://jspm.io/) and [Gulp](http://gulpjs.com/) for building our files and assisting with boilerplate.
 **This seed is not a yeoman generator!** Its just a minimal starter with tasks to build and create boilerplate. **Features include**:
 * Best practice in file organization for Angular
 * Frictionless package management and module loader with [JSPM](http://jspm.io)
-* Ready to go build system for working with [ES6](https://git.io/es6features)
+* Ready to go build system for working with [ES6](https://git.io/es6features)+Typescript
 * Task for generating component boilerplate with angular, including test
 * Testing system ready to go
 
@@ -32,12 +34,12 @@ ___
     * [Running the app](#running-the-app)
         * [Gulp tasks](#gulp-tasks)
         * [Testing](#testing)
-    * [Generating Components](#generating-components)   
+    * [Generating Components](#generating-components)
 * [Starter Kit Support and Questions](#starter-kit-support-and-questions)
 
 # Walkthrough
 ## How is this different than Webpack?
-Webpack builds your application into a single package before you serve it to the client. JSPM is different for two major reasons: 
+Webpack builds your application into a single package before you serve it to the client. JSPM is different for two major reasons:
  1. JSPM is built ontop of [SystemJS](https://github.com/systemjs/systemjs) which uses a polyfill for the new ES6 module loader that will eventually be supportedly natively. This means that there is no intermediate build process before your files are served. Instead, the module loader will load (and transpile) only the files it needs at runtime. When you're ready for deployment, JSPM can also bundle your app for production (very much like webpack here).
  2. JSPM abstracts dependency management. You can `jspm install` any package that lives on bower, npm, or github and use the ES6 `import` syntax all the same on them.
 
@@ -46,7 +48,7 @@ This branch of NG6 uses the power of JSPM and Gulp together for its build system
 
 `JSPM` does most of the heavy lifting here, it handles:
 * Dependency management. Download external modules from npm, bower, or straight from github
-* Dynamic transpiling from ES6 to ES5 with `Babel`
+* Uses typescript as module loader transpiler
 * Loading HTML files as modules
 * Loading CSS files and appending the styles to the DOM
 * Loading any and all modules
@@ -54,6 +56,7 @@ This branch of NG6 uses the power of JSPM and Gulp together for its build system
 
 `Gulp` is like the orchestrator, it handles:
 * Starting a dev server
+* Compiles typescript to js
 * Refreshing the browser on file changes
 * Generate boilerplate for our angular app
 * Building a production version of our app ready for deployment
@@ -65,17 +68,17 @@ We use the component approach in NG6. This will be a standard if using the new r
 ```
 client
 --app/
-----app.js * entry file for app
+----app.ts * entry file for app
 ----app.html * template for app
 ----components/ * where most of components live
-------components.js * entry file for components
+------components.ts * entry file for components
 ------home/ * home component
---------home.js * home entry file
---------home.component.js * directive for home
---------home.controller.js * controller for home
---------home.styl * styles for home
+--------home.ts * home entry file
+--------home.component.ts * directive for home
+--------home.controller.ts * controller for home
+--------home.css * styles for home
 --------home.html * template for home
---------home.spec.js * specs for home
+--------home.spec.ts * specs for home
 ----common/ * where common things in our app live
 ```
 
@@ -96,6 +99,7 @@ What you need to run this app:
 * `node` and `npm`
 Once you have those, you should install these globals with `npm i -g`:
 * `jspm`
+* `tsd`
 * `gulp`
 * `karma`
 * `karma-cli`
@@ -103,7 +107,7 @@ Once you have those, you should install these globals with `npm i -g`:
 ## Installing
 * `fork` me
 * `clone` your fork
-* `git checkout jspm`
+* `git checkout jspm-typescript`
 * `npm i` to install all dependencies
 * (with JSPM there's usually a `jspm install` step too, but that is added to npm's `postinstall` for convenience)
 
@@ -114,10 +118,10 @@ Fix this by adding your GitHub credentials to JSPM with: `jspm registry config g
 
 ## Running the app
 NG6 uses Gulp to build and start the dev environment. After you have installed all dependencies you can now run the app.
-Run `gulp` to start a dev server and watch all files. The port will displayed to you.
- 
+Run `gulp` to start a dev server, compile typescript and watch all files. The port will displayed to you.
+
 ### Gulp tasks
-Without Webpack's required build step, serving is easy and you choose when you are ready to build now 
+Without Webpack's required build step, serving is easy and you choose when you are ready to build now
 
 Here's a list of possible Gulp task to run:
 * `serve` (also default `gulp`)
@@ -126,7 +130,7 @@ Here's a list of possible Gulp task to run:
   * bundles our app into a single file with all included dependencies into `dist/`. both minified and unminified included
 * `component`
   * builds out boilerplate for a new angular component, [read below](#generating-components) to see how to use this in more detail
-  
+
 ### Testing
 To run test, just run `npm test` or `karma start`.
 
@@ -153,13 +157,13 @@ The `--name` flag is the name of the component you want to create. Be sure to be
 
 The component will be created by default on the root of `client/app/components`.
 
-We can change this by passing in the `--parent` flag. 
+We can change this by passing in the `--parent` flag.
 
 You can pass in a path relative to `client/app/components/` and your component will be made there.
 
 So running `gulp component --name signup --parent auth` will create a `signup` component at `client/app/components/auth/signup`.
 
-Running `gulp component --name footer --parent ../common` will create a `footer` component at `client/app/common/footer`. 
+Running `gulp component --name footer --parent ../common` will create a `footer` component at `client/app/common/footer`.
 
 Because `--name` is used to create folder name too, use camel or snakeCase and stay consistent.
 
@@ -171,7 +175,7 @@ Because `--name` is used to create folder name too, use camel or snakeCase and s
 
 ___
 
-enjoy -- **AngularClass** 
+enjoy -- **AngularClass**
 
 
 <br><br>
