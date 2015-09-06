@@ -1,5 +1,5 @@
 {
-  "name": "angular-jspm-starter",
+  "name": "angular-jspm-typescript-starter",
   "version": "0.0.1",
   "description": "starter",
   "repository": {
@@ -9,12 +9,15 @@
   "dependencies": {},
   "scripts": {
     "test": "karma start",
-    "postinstall": "jspm install"
+    "preinstall": "tsd reinstall -so",
+    "postinstall": "jspm install",
+    "start": "gulp"
   },
   "keywords": [
     "angular",
     "jspm",
-    "es6"
+    "es6",
+    "typescript"
   ],
   "author": "AngularClass",
   "license": "ISC",
@@ -49,6 +52,7 @@
     "karma-jspm": "^1.1.5",
     "karma-mocha": "^0.1.10",
     "karma-mocha-reporter": "^1.0.2",
+    "typescript": "^1.6.0-beta",
     "yargs": "^3.10.0"
   }
 }
