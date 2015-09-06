@@ -1,27 +1,41 @@
-import angular from 'angular';
-import 'angular-ui-router';
-import Common from './common/common';
-import Components from './components/components';
-import AppComponent from './app.component';
-import 'normalize.css';
-
-let appModule = angular.module('app', [
-	'ui.router',
-	Common.name,
-	Components.name
-])
-.directive('app', AppComponent);
-
-/*
- * As we are using ES6 with Angular 1.x we can't use ng-app directive
- * to bootstrap the application as modules are loaded asynchronously.
- * Instead, we need to bootstrap the application manually
- */
-
-angular.element(document).ready(()=> {
-  angular.bootstrap(document, [appModule.name]), {
-    strictDi: true
-  }
+System.register(['angular', 'angular-ui-router', './common/common', './components/components', './app.component', 'normalize.css'], function(exports_1) {
+    var angular, common_1, components_1, app_component_1;
+    var appModule;
+    return {
+        setters:[
+            function (angular_1) {
+                angular = angular_1;
+            },
+            function (_1) {},
+            function (common_1_1) {
+                common_1 = common_1_1;
+            },
+            function (components_1_1) {
+                components_1 = components_1_1;
+            },
+            function (app_component_1_1) {
+                app_component_1 = app_component_1_1;
+            },
+            function (_2) {}],
+        execute: function() {
+            appModule = angular.module('app', [
+                'ui.router',
+                common_1.default.name,
+                components_1.default.name
+            ])
+                .directive('app', app_component_1.default);
+            /*
+             * As we are using ES6 with Angular 1.x we can't use ng-app directive
+             * to bootstrap the application as modules are loaded asynchronously.
+             * Instead, we need to bootstrap the application manually
+             */
+            angular.element(document).ready(function () {
+                angular.bootstrap(document, [appModule.name]), {
+                    strictDi: true
+                };
+            });
+            exports_1("default",appModule);
+        }
+    }
 });
-
-export default appModule;
+//# sourceMappingURL=app.js.map
