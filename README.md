@@ -64,7 +64,7 @@ This branch of NG6 uses the power of JSPM and Gulp together for its build system
 **Check out the [webpack version](https://github.com/angular-class/NG6-starter/tree/master) for an alternative ES6 build system**
 
 ## File Structure
-We use the component approach in NG6. This will be a standard if using the new router in angular and a great way to ensure easy transition to Angular 2. Everything or mostly everything is a component. A component is a self contained app basically. It has its own style, template, controllers, routing, specs, etc. All capsulated in its own folder. Here's how it looks:
+We use the component approach in ngTs. This will be a standard if using the new router in angular and a great way to ensure easy transition to Angular 2. Everything or mostly everything is a component. A component is a self contained app basically. It has its own style, template, controllers, routing, specs, etc. All capsulated in its own folder. Here's how it looks:
 ```
 client
 --app/
@@ -72,14 +72,38 @@ client
 ----app.html * template for app
 ----components/ * where most of components live
 ------components.ts * entry file for components
-------home/ * home component
+------home/ * home component/ 
 --------home.ts * home entry file
 --------home.component.ts * directive for home
---------home.controller.ts * controller for home
 --------home.css * styles for home
 --------home.html * template for home
 --------home.spec.ts * specs for home
+------table/ * home component/ on the root should be only one main component
+--------table-header/ * child component
+----------table-header.ts
+----------table-header.component.ts
+----------table-header.component.spec.ts
+----------table-header.html
+----------table-header.css
+--------table-footer/ * child component
+----------table-footer.ts
+----------table-footer.component.ts
+----------table-footer.component.spec.ts
+----------table-footer.html
+----------table-footer.css
+--------table-validator/
+----------table-validator.ts
+----------table-validator.directive.ts * specific decorator for table
+--------table.ts * table entry file
+--------table.component.ts * table main component, where we register controller + directive
+--------table.css * styles for home
+--------table.html * template for home ( preferr inline templates if possible )
+--------table.spec.ts * specs for home
 ----common/ * where common things in our app live
+------utils/ * where generic functionality helpers lives 
+------services/ * generic services and funcionality ( Data Service for communication via REST )
+--------view/ * whole view module
+------style/ * global app styles
 ```
 
 ## Testing Setup
@@ -175,12 +199,4 @@ Because `--name` is used to create folder name too, use camel or snakeCase and s
 
 ___
 
-enjoy -- **AngularClass**
-
-
-<br><br>
-
-[![AngularClass](https://angularclass.com/images/ng-crown.svg  "Angular Class")](https://angularclass.com)
-##[AngularClass](https://angularclass.com)
-> Learn Angular in 2 days from the best
-
+enjoy -- **ngParty**
