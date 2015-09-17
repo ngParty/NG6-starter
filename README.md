@@ -64,21 +64,25 @@ This branch of NG6 uses the power of JSPM and Gulp together for its build system
 **Check out the [webpack version](https://github.com/angular-class/NG6-starter/tree/master) for an alternative ES6 build system**
 
 ## File Structure
-We use the component approach in ngTs. This will be a standard if using the new router in angular and a great way to ensure easy transition to Angular 2. Everything or mostly everything is a component. A component is a self contained app basically. It has its own style, template, controllers, routing, specs, etc. All capsulated in its own folder. Here's how it looks:
+We use the component approach in ngTs.
+This will be a standard if using the new router in angular and a great way to ensure easy transition to Angular 2.
+Everything or mostly everything is a component. A component is a self contained app basically.
+It has its own style, template, controllers, routing, specs, etc. All encapsulated in its own folder.
+
+Here's how it looks:
 ```
 client
 --app/
 ----app.ts * entry file for app
 ----app.html * template for app
+----globals.d.ts * file for global custom TS definitions or overrides
 ----components/ * where most of components live
 ------components.ts * entry file for components
-------home/ * home component/ 
---------home.ts * home entry file
---------home.component.ts * directive for home
---------home.css * styles for home
---------home.html * template for home
---------home.spec.ts * specs for home
-------table/ * home component/ on the root should be only one main component
+------table/ * table component/ on the root should be only one main component
+--------demo/ * component demo usage
+----------index.html
+----------script.ts
+----------style.css
 --------table-header/ * child component
 ----------table-header.ts
 ----------table-header.component.ts
@@ -91,19 +95,114 @@ client
 ----------table-footer.component.spec.ts
 ----------table-footer.html
 ----------table-footer.css
---------table-validator/
+--------table-validator/ * table specific directives
 ----------table-validator.ts
 ----------table-validator.directive.ts * specific decorator for table
 --------table.ts * table entry file
 --------table.component.ts * table main component, where we register controller + directive
---------table.css * styles for home
---------table.html * template for home ( preferr inline templates if possible )
---------table.spec.ts * specs for home
+--------table.css * styles for table
+--------table.html * template for table ( preferr inline templates if possible )
+--------table.spec.ts * specs for table
 ----common/ * where common things in our app live
-------utils/ * where generic functionality helpers lives 
-------services/ * generic services and funcionality ( Data Service for communication via REST )
---------view/ * whole view module
-------style/ * global app styles
+------common.ts * entry file for common
+------utils/ * where generic functionality helpers lives
+------services/ * generic services and funcionality ( Data Service for communication via REST etc)
+--------view/ * whole viewCreater module
+--------data/ * REST api service
+----------data.ts * entry file for data
+----------data.service.ts * REST API implementation
+----------data.service.spec.ts
+--------storage/ * IndexDB browser storage
+----style/ * global app styles
+------variables.less
+------typography.less
+------mixins.less
+```
+
+Now when you know the scaffold let's give those blocks more explanation.
+
+**NOTE:** for further reference see `/app/components` source code
+
+### Directive Types
+
+* [components](#components)
+* [directives](#directives)
+* [decorators ( component/directive )](#decorators)
+
+#### Components
+
+* name: `your-name.component.ts`
+* template: YES/ prefer inline via ES6 template strings
+
+```
+// table.component.ts
+import template from './table.html!text';
+import './table.css!';
+import {Inject} from '../../common/utils/metadata/metadata';
+
+//@Component( {
+//  selector: 'table'
+//} )
+//@View( {
+//  template: template
+//} )
+class TableComponent {
+
+  private static selector = 'table';
+  private static template = template;
+  private static options = {};
+
+  constructor(
+    private @Inject('$log') $log: ng.ILogService
+  ){
+  }
+}
+
+
+export default TableComponent;
+
+```
+
+#### Directives
+
+* name: `your-name.directive.ts`
+* template: NO
+
+#### Decorators
+
+* name: `your-name.ddirective.ts`
+* template: NO
+
+**NOTE** All angular hooks will be removed when we will switch to using ES7 @decorators
+
+### Entry files
+
+Every entry file should:
+* have it's module definition
+* import all related files
+* export default the module
+
+```typescript
+// table.ts
+
+import angular from 'angular';
+import TableComponent from './table.component';
+import TableHeader from './table-header/table-header';
+import TableFooter from './table-footer/table-footer';
+import TableValidators from './table-validators/table-validators';
+
+import {makeDirective,makeSelector} from '../../common/utils/metadata/metadata'
+
+const ngModule = angular
+    .module('table',[
+        TableHeader.name,
+        TableFooter.name,
+        TableValidators.name
+    ])
+    .directive( makeSelector( TableComponent ), makeDirective( TableComponent ) );
+
+export default ngModule;
+
 ```
 
 ## Testing Setup
