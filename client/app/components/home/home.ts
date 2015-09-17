@@ -1,19 +1,16 @@
 import * as angular from 'angular';
 import 'angular-ui-router';
-import homeComponent from './home.component';
 
-let homeModule = angular.module('home', [
-	'ui.router'
-])
-.config(($stateProvider, $urlRouterProvider)=>{
-	$urlRouterProvider.otherwise('/');
+import {makeDirective,makeSelector} from '../../common/utils/metadata/metadata'
 
-	$stateProvider
-		.state('home', {
-			url: '/',
-			template: '<home></home>'
-		});
-})
-.directive('home', homeComponent);
+import config from './home.config';
+import HomeComponent from './home.component';
 
-export default homeModule;
+
+const ngModule = angular.module( 'home', [
+    'ui.router'
+  ] )
+    .config( config )
+    .directive( makeSelector( HomeComponent ), makeDirective( HomeComponent ) );
+
+export default ngModule;

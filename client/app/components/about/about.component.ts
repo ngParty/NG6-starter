@@ -1,17 +1,24 @@
 import template from './about.html!text';
-import controller from './about.controller';
 import './about.css!';
 
-let aboutComponent = function(){
-	return {
-		template,
-		controller,
-		restrict: 'E',
-		controllerAs: 'vm',
-		scope: {},
-		bindToController: {}
-	};
-};
+//@Component( {
+//  selector: 'about'
+//} )
+//@View( {
+//  template: template
+//} )
+class AboutComponent {
+
+  name:string;
+
+  private static selector = 'about';
+  private static template = 'template';
+  private static options = {};
+
+  constructor(){
+    this.name = 'about';
+  }
+}
 
 
-export default aboutComponent;
+export default AboutComponent;

@@ -1,16 +1,23 @@
-import controller from './home.controller';
 import template from './home.html!text';
 import './home.css!';
 
-let homeComponent = function(){
-	return {
-		template,
-		controller,
-		restrict: 'E',
-		controllerAs: 'vm',
-		scope: {},
-		bindToController: {}
-	};
-};
+//@Component( {
+//  selector: 'home'
+//} )
+//@View( {
+//  template: template
+//} )
+class HomeComponent {
+  name: string;
 
-export default homeComponent;
+  private static selector = 'home';
+  private static template = template;
+  private static options = {};
+
+  constructor() {
+    this.name = 'home';
+  }
+
+}
+
+export default HomeComponent;

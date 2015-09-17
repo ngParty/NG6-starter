@@ -1,17 +1,15 @@
 import * as angular from 'angular';
 import 'angular-ui-router';
-import aboutComponent from './about.component';
 
-let aboutModule = angular.module('about', [
-	'ui.router'
-])
-.config(($stateProvider)=>{
-	$stateProvider
-		.state('about', {
-			url: '/about',
-			template: `<about></about>`
-		});
-})
-.directive('about', aboutComponent);
+import {makeDirective,makeSelector} from '../../common/utils/metadata/metadata'
 
-export default aboutModule;
+import config from './about.config';
+import AboutComponent from './about.component';
+
+const ngModule = angular.module( 'about', [
+  'ui.router'
+] )
+  .config( config )
+  .directive( makeSelector( AboutComponent ), makeDirective( AboutComponent ) );
+
+export default ngModule;

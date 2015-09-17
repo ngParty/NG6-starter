@@ -1,11 +1,18 @@
 import template from './app.html!text';
 import './app.css!';
 
-let appComponent = ()=>{
-	return {
-		template, // because we have a variable name template we can use the shorcut here
-		restrict: 'E'
-	};
-};
+//@Component( {
+//  selector: 'app'
+//} )
+//@View( {
+//  template: template
+//} )
+class AppComponent{
 
-export default appComponent;
+  private static selector = 'app';
+  private static template = template;
+  private static options = {};
+
+}
+
+export default AppComponent;
