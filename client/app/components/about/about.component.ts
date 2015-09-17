@@ -12,7 +12,7 @@ class AboutComponent {
   name:string;
 
   private static selector = 'about';
-  private static template = 'template';
+  private static template = template;
   private static options = {};
 
   constructor(){
