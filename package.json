@@ -22,11 +22,10 @@
   "author": "AngularClass",
   "license": "ISC",
   "jspm": {
-    "directories": {},
     "configFile": "jspm.config.js",
     "dependencies": {
       "angular": "npm:angular@^1.4.5",
-      "angular-mocks": "npm:angular-mocks@^1.4.5",
+      "angular-mocks": "github:angular/bower-angular-mocks@^1.4.6",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15",
       "css": "github:systemjs/plugin-css@^0.1.16",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
@@ -39,6 +38,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.7.6",
+    "chai": "^3.3.0",
     "gulp": "^3.9.0",
     "gulp-html-replace": "^1.5.0",
     "gulp-ng-annotate": "^1.0.0",
@@ -49,9 +49,10 @@
     "karma": "^0.12.36",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.12",
-    "karma-jspm": "^1.1.5",
+    "karma-jspm": "https://github.com/JeroenVinke/karma-jspm#master",
     "karma-mocha": "^0.1.10",
     "karma-mocha-reporter": "^1.0.2",
+    "mocha": "^2.3.3",
     "typescript": "^1.6.0-beta",
     "yargs": "^3.10.0"
   }
