@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "./",
+  baseURL: (typeof __karma__ !== "undefined") ? "base" : "/", // #Workiva/karma-jspm/issues/91
   defaultJSExtensions: true,
   transpiler: "typescript",
   paths: {
@@ -9,13 +9,16 @@ System.config({
 
   map: {
     "angular": "npm:angular@1.4.5",
-    "angular-mocks": "npm:angular-mocks@1.4.5",
+    "angular-mocks": "github:angular/bower-angular-mocks@1.4.6",
     "angular-ui-router": "npm:angular-ui-router@0.2.15",
     "core-js": "npm:core-js@0.9.14",
     "css": "github:systemjs/plugin-css@0.1.16",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "text": "github:systemjs/plugin-text@0.0.2",
     "typescript": "npm:typescript@1.6.0-dev.20150905",
+    "github:angular/bower-angular-mocks@1.4.6": {
+      "angular": "github:angular/bower-angular@1.4.6"
+    },
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.4.3"
     },
