@@ -8,3 +8,5 @@ jspm_packages
 dist/
 client/**/*.js.map
 client/**/*.js
+!client/config.js
+tmp/
