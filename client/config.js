@@ -5,18 +5,19 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   map: {
-    "angular": "npm:angular@1.4.5",
-    "angular-mocks": "github:angular/bower-angular-mocks@1.4.6",
+    "angular": "npm:angular@1.4.7",
+    "angular-mocks": "github:angular/bower-angular-mocks@1.4.7",
     "angular-ui-router": "npm:angular-ui-router@0.2.15",
     "clean-css": "npm:clean-css@3.4.5",
-    "core-js": "npm:core-js@0.9.14",
-    "css": "github:systemjs/plugin-css@0.1.16",
+    "core-js": "npm:core-js@0.9.18",
+    "css": "github:systemjs/plugin-css@0.1.18",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "text": "github:systemjs/plugin-text@0.0.2",
     "typescript": "npm:typescript@1.6.0-dev.20150905",
-    "github:angular/bower-angular-mocks@1.4.6": {
-      "angular": "github:angular/bower-angular@1.4.6"
+    "github:angular/bower-angular-mocks@1.4.7": {
+      "angular": "github:angular/bower-angular@1.4.7"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -57,7 +58,7 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "github:necolas/normalize.css@3.0.3": {
-      "css": "github:systemjs/plugin-css@0.1.16"
+      "css": "github:systemjs/plugin-css@0.1.18"
     },
     "npm:amdefine@1.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -68,7 +69,7 @@ System.config({
     "npm:angular-ui-router@0.2.15": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:angular@1.4.5": {
+    "npm:angular@1.4.7": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:assert@1.3.0": {
@@ -100,7 +101,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:core-js@0.9.14": {
+    "npm:core-js@0.9.18": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"

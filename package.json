@@ -27,8 +27,8 @@
       "baseURL": "client"
     },
     "dependencies": {
-      "angular": "npm:angular@^1.4.5",
-      "angular-mocks": "github:angular/bower-angular-mocks@^1.4.6",
+      "angular": "npm:angular@^1.4.7",
+      "angular-mocks": "github:angular/bower-angular-mocks@^1.4.7",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15",
       "clean-css": "npm:clean-css@^3.4.5",
       "css": "github:systemjs/plugin-css@^0.1.16",
@@ -53,7 +53,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-template": "^3.0.0",
     "gulp-uglify": "^1.2.0",
-    "jspm": "^0.16.2",
+    "jspm": "^0.16.11",
     "karma": "^0.12.36",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.12",
@@ -62,7 +62,7 @@
     "karma-mocha-reporter": "^1.0.2",
     "mocha": "^2.3.3",
     "rimraf": "^2.4.3",
-    "typescript": "^1.6.0-beta",
+    "typescript": "^1.6.2",
     "yargs": "^3.10.0"
   }
 }
