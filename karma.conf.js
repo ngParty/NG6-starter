@@ -4,7 +4,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: 'client',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -31,13 +31,14 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      config: 'jspm.config.js',
-      loadFiles: ['client/app/**/*.spec.js'],
+      config: 'config.js',
+      loadFiles: ['app/**/*.spec.js'],
       serveFiles: [
-        'client/app/**/*.js',
-        'client/app/**/*.html',
-        'client/app/**/*.css'
-      ]
+        'app/**/*.js',
+        'app/**/*.html',
+        'app/**/*.css'
+      ],
+      packages: "jspm_packages/"
     },
 
     proxies: {

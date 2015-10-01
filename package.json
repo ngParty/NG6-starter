@@ -11,7 +11,8 @@
     "test": "karma start",
     "preinstall": "tsd reinstall -so",
     "postinstall": "jspm install",
-    "start": "gulp"
+    "start": "tsc;broccoli serve",
+    "dist": "tsc;rimraf dist;BROCCOLI_ENV=production broccoli build dist;jspm bundle-sfx app/app dist/index-bundle.js --minify"
   },
   "keywords": [
     "angular",
@@ -22,28 +23,30 @@
   "author": "AngularClass",
   "license": "ISC",
   "jspm": {
-    "configFile": "jspm.config.js",
+    "directories": {
+      "baseURL": "client"
+    },
     "dependencies": {
       "angular": "npm:angular@^1.4.7",
       "angular-mocks": "github:angular/bower-angular-mocks@^1.4.7",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15",
+      "clean-css": "npm:clean-css@^3.4.5",
       "css": "github:systemjs/plugin-css@^0.1.16",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
       "text": "github:systemjs/plugin-text@^0.0.2"
     },
     "devDependencies": {
-      "typescript": "npm:typescript@^1.6.2"
+      "core-js": "npm:core-js@^0.9.10"
     }
   },
   "devDependencies": {
+    "broccoli": "^0.16.8",
+    "broccoli-browser-sync": "^1.0.0",
+    "broccoli-cli": "^1.0.0",
+    "broccoli-env": "0.0.1",
+    "broccoli-merge-trees": "^0.2.3",
     "browser-sync": "^2.7.6",
     "chai": "^3.3.0",
-    "gulp": "^3.9.0",
-    "gulp-html-replace": "^1.5.0",
-    "gulp-ng-annotate": "^1.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-template": "^3.0.0",
-    "gulp-uglify": "^1.2.0",
     "jspm": "^0.16.11",
     "karma": "^0.12.36",
     "karma-chai": "^0.1.0",
@@ -52,6 +55,7 @@
     "karma-mocha": "^0.1.10",
     "karma-mocha-reporter": "^1.0.2",
     "mocha": "^2.3.3",
+    "rimraf": "^2.4.3",
     "typescript": "^1.6.2",
     "yargs": "^3.10.0"
   }
